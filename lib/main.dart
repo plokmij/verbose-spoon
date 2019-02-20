@@ -5,24 +5,26 @@ void main() {
   runApp(App());
 }
 
-
 class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        body:NestedScrollView(
-          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled){
+        body: NestedScrollView(
+          headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
             return <Widget>[
               SliverAppBar(
                 backgroundColor: Colors.black,
                 title: Text("Profile"),
-                expandedHeight: 320.0,
+                expandedHeight: 256.0,
                 pinned: true,
                 flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
-                  background: ProfileCard(fullName: 'Samfan',phoneNo: '+91-8129127294',),
+                  background: ProfileCard(
+                    fullName: 'Samfan',
+                    phoneNo: '+91-8129127294',
+                  ),
                 ),
-                
+
                 /*flexibleSpace: FlexibleSpaceBar(
                   centerTitle: true,
                   title: Text("Collapsing Toolbar",
@@ -63,11 +65,10 @@ class ProfileCard extends StatelessWidget {
 
   Widget card(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top:80.0),
+      margin: EdgeInsets.only(top: 80.0),
       child: Stack(
         children: <Widget>[
           colorBox(Colors.black),
-          SizedBox(height:10.0),
           profilePic(context),
           nameNnumber(),
         ],
@@ -77,14 +78,14 @@ class ProfileCard extends StatelessWidget {
 
   Widget colorBox(Color color) {
     return Container(
-      height: 248.0,
+      height: 200.0,
       decoration: BoxDecoration(
           color: Colors.black,
           shape: BoxShape.rectangle,
           boxShadow: <BoxShadow>[
             BoxShadow(
               blurRadius: 2.0,
-              offset: Offset(0.0, 10.0),
+              offset: Offset(0.0, 1.0),
             )
           ]),
     );
@@ -96,7 +97,7 @@ class ProfileCard extends StatelessWidget {
       alignment: Alignment.center,
       child: Icon(
         Icons.account_circle,
-        size: 124.0,
+        size: 100.0,
         color: Colors.black,
       ),
       decoration: BoxDecoration(
@@ -122,20 +123,20 @@ class ProfileCard extends StatelessWidget {
       textAlign: TextAlign.center,
       style: TextStyle(
         color: Colors.white,
-        fontSize: 15.0,
+        fontSize: 12.0,
         fontWeight: FontWeight.w400,
       ),
     );
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.only(
-        top: 155.0,
+        top: 125.0,
       ),
       child: Column(
         children: <Widget>[
           name,
           SizedBox(
-            height: 1.0,
+            height: 5.0,
           ),
           number
         ],
@@ -152,8 +153,8 @@ class OptionList extends StatelessWidget {
         buildTile(context, "Booking History", Icons.history),
         buildTile(context, "Send Feedback", Icons.feedback),
         buildTile(context, "Invite", Icons.supervisor_account),
-        buildTile(context, "Notification Preferences", Icons.notification_important),
-        
+        buildTile(
+            context, "Notification Preferences", Icons.notification_important),
       ],
     );
   }
